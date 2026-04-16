@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAFEFAB Power — Safety & Facilities Services</title>
+  <link rel="icon" type="image/png" href="./Brand Assets/Icon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand-teal:   #3a8fad;
+      --brand-teal-d: #2a6e87;
+      --brand-teal-l: #5bc9d6;
+      --brand-teal-xl:#e8f6f9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 21px;
+      background: #ffffff;
+      color: #1a2e35;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Red Hat Display', sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid #e5eef1;
+      box-shadow: 0 1px 8px 0 rgba(58,143,173,0.06);
+    }
+    nav a {
+      color: #1a2e35;
+      font-weight: 500;
+      font-size: 19px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+    nav a:hover  { color: var(--brand-teal); }
+    nav a:focus-visible { outline: 2px solid var(--brand-teal); border-radius: 2px; }
+
+    /* ── Accent line ── */
+    .accent-line {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand-teal), var(--brand-teal-l));
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    /* ── Section labels ── */
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand-teal);
+      background: rgba(58, 143, 173, 0.08);
+      border: 1px solid rgba(58, 143, 173, 0.25);
+      border-radius: 999px;
+      padding: 0.25rem 0.85rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Section headings ── */
+    .section-heading {
+      font-size: clamp(31px, 3vw, 43px);
+      font-weight: 700;
+      color: #3a8fad;
+      line-height: 1.15;
+    }
+
+    /* ── Service card ── */
+    .service-card {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      box-shadow: none;
+      transition: transform 0.25s cubic-bezier(.22,.68,0,1.2);
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 660px;
+      object-fit: contain;
+      background: transparent;
+      padding: 0;
+    }
+    @media (min-width: 768px) {
+      .service-card img { height: 528px; }
+    }
+
+    /* ── Bullet lists ── */
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 19px;
+      line-height: 1.5;
+      padding: 0.3rem 0;
+      color: #2a4550;
+    }
+    .service-list li::before {
+      content: '';
+      flex-shrink: 0;
+      margin-top: 0.45rem;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--brand-teal);
+    }
+    .service-list .sub-item::before {
+      background: var(--brand-teal-l);
+      width: 5px;
+      height: 5px;
+      margin-top: 0.5rem;
+    }
+    .service-list .sub-item {
+      padding-left: 1.25rem;
+      color: #3a5a66;
+      font-size: 18px;
+    }
+
+    /* ── About strip ── */
+    .about-strip {
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+      border: none;
+    }
+
+    /* ── Contact form ── */
+    .form-input {
+      width: 100%;
+      border: 1px solid #ccdee5;
+      border-radius: 8px;
+      padding: 0.65rem 0.9rem;
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 19px;
+      color: #1a2e35;
+      background: #f9fdfe;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input:focus {
+      border-color: var(--brand-teal);
+      box-shadow: 0 0 0 3px rgba(58,143,173,0.12);
+      background: #ffffff;
+    }
+    .form-input::placeholder { color: #94b4be; }
+
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #61d6e1 0%, #3a8fad 50%, #2a6e87 100%);
+      color: #ffffff;
+      font-family: 'Red Hat Display', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.56rem 1.75rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      box-shadow:
+        0 2px 8px 0 rgba(58,143,173,0.25),
+        0 1px 2px 0 rgba(58,143,173,0.15);
+      transition: transform 0.18s cubic-bezier(.22,.68,0,1.2),
+                  box-shadow 0.18s ease,
+                  background 0.18s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 6px 18px 0 rgba(58,143,173,0.3),
+        0 2px 4px 0 rgba(58,143,173,0.18);
+    }
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--brand-teal);
+      outline-offset: 3px;
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 4px 0 rgba(58,143,173,0.2);
+    }
+
+    /* ── Card text mobile offset ── */
+    @media (max-width: 767px) {
+      .card-text { margin-top: -100px !important; }
+      .second-card { margin-top: -130px; }
+      .service-list li { font-size: 17px; }
+      .service-list .sub-item { font-size: 16px; }
+      .about-strip p { font-size: 17px !important; }
+      #contact p { font-size: 14px !important; }
+      .form-input { font-size: 17px; }
+    }
+
+    /* ── Logo carousel ── */
+    @keyframes marquee {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-33.333%); }
+    }
+    .carousel-section {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f9fdfe;
+      border-top: 1px solid #e8f3f6;
+      border-bottom: 1px solid #e8f3f6;
+      overflow: hidden;
+    }
+    .carousel-logos {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      width: max-content;
+      animation: marquee 24s linear infinite;
+    }
+    .carousel-logos:hover { animation-play-state: paused; }
+
+    /* ── Divider ── */
+    .teal-divider {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand-teal-xl), var(--brand-teal-l) 40%, var(--brand-teal-xl));
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════
+       NAV
+  ══════════════════════════════════════ -->
+  <nav>
+    <div class="max-w-6xl mx-auto px-6 py-[17px] flex items-center justify-between gap-6">
+      <img src="./Brand Assets/Logo.png" alt="SAFEFAB Power" class="h-[24px] md:h-10 w-auto" />
+      <a href="#contact" class="btn-primary" style="text-decoration:none; font-size:11px; padding:0.41rem 1.26rem; background:linear-gradient(135deg,#61d6e1 0%,#3a8fad 50%,#2a6e87 100%);">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       SECTION 1 — HERO / COMPANY INFO
+  ══════════════════════════════════════ -->
+  <section id="home" class="relative overflow-hidden" style="margin-bottom:-20px;">
+
+    <!-- Background layer -->
+    <div class="absolute inset-0 -z-10" aria-hidden="true">
+      <!-- Base gradient -->
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#eaf6fa 0%,#f5fcfe 55%,#e0f4f8 100%);"></div>
+
+      <!-- Large soft circle — top right -->
+      <div style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.18) 0%,transparent 70%);"></div>
+
+      <!-- Medium circle — bottom left -->
+      <div style="position:absolute;bottom:-80px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(58,143,173,0.12) 0%,transparent 70%);"></div>
+
+      <!-- Small accent circle — mid left -->
+      <div style="position:absolute;top:40%;left:8%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.14) 0%,transparent 70%);"></div>
+
+<!-- Diagonal grid dots -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.2" fill="#3a8fad"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots)"/>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="max-w-6xl mx-auto px-6 pt-20 pb-16 md:pt-36 md:pb-36">
+      <div class="flex flex-col md:flex-row md:items-center md:gap-12">
+
+        <!-- Mobile-only pill (above logo) -->
+        <div class="text-center md:hidden order-0 -mb-[26px]">
+          <h1 class="section-label">Safety &amp; Facilities Services</h1>
+        </div>
+
+        <!-- Left: text -->
+        <div class="flex-1 text-center md:text-left order-2 md:order-1 mt-[45px] md:mt-0">
+          <h1 class="section-label mb-6 hidden md:inline-block">Safety &amp; Facilities Services</h1>
+          <h2 class="section-heading mb-4">End-to-End Safety, Systems &amp; Solutions.</h2>
+          <p class="text-[#3a5a66] leading-relaxed" style="font-size:21px;">
+            Backed by industry expertise, we deliver practical safety solutions, certified training, and reliable systems that keep your operations compliant and resilient.
+          </p>
+          <div class="mt-8">
+            <a href="#contact" class="btn-primary" style="text-decoration:none;">Contact Us</a>
+          </div>
+        </div>
+
+        <!-- Right: logo -->
+        <div class="flex-1 flex justify-center md:justify-end mt-10 md:mt-0 order-1 md:order-2">
+          <img src="./Brand Assets/Safe-Stacked.png" alt="SAFEFAB Power" class="w-full md:w-auto md:h-80 max-w-xs mx-auto" style="object-fit:contain;" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       LOGO CAROUSEL
+  ══════════════════════════════════════ -->
+  <section class="carousel-section">
+    <span class="section-label" style="margin-bottom:calc(1.25rem + 10px); display:inline-block;">Trusted By</span>
+    <div class="carousel-logos" id="carouselLogos">
+      <!-- Set 1 -->
+      <img src="./Brand Assets/Logo-ABB.png" alt="ABB" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Greensafe.png" alt="Greensafe" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-RMR.png" alt="RMR" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Silicon Box.png" alt="Silicon Box" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Siltronic.png" alt="Siltronic" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <!-- Set 2 -->
+      <img src="./Brand Assets/Logo-ABB.png" alt="ABB" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Greensafe.png" alt="Greensafe" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-RMR.png" alt="RMR" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Silicon Box.png" alt="Silicon Box" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Siltronic.png" alt="Siltronic" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <!-- Set 3 -->
+      <img src="./Brand Assets/Logo-ABB.png" alt="ABB" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Greensafe.png" alt="Greensafe" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-RMR.png" alt="RMR" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Silicon Box.png" alt="Silicon Box" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Siltronic.png" alt="Siltronic" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <!-- Set 4 -->
+      <img src="./Brand Assets/Logo-ABB.png" alt="ABB" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Greensafe.png" alt="Greensafe" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-RMR.png" alt="RMR" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Silicon Box.png" alt="Silicon Box" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+      <img src="./Brand Assets/Logo-Siltronic.png" alt="Siltronic" style="height:62px; width:auto; object-fit:contain; opacity:0.7; flex-shrink:0;" />
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 2 — SERVICES
+  ══════════════════════════════════════ -->
+  <section id="services" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="mb-4 md:mb-12 text-center">
+      <span class="section-label">What We Do</span>
+
+      <h2 class="section-heading">Our Services</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 -mt-[100px] md:mt-0">
+
+      <!-- LEFT — Safety Services (Image 2) -->
+      <div class="service-card">
+        <img src="./Brand Assets/Image 2.png" alt="Safety services equipment" />
+        <div class="p-7 card-text" style="margin-top:-30px;">
+          <h3 class="font-bold text-[#3a8fad] mb-4" style="font-size:25px;" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:-0.01em;">
+            Safety Services
+          </h3>
+          <ul class="service-list">
+            <li>Safety Training</li>
+            <li>Safety Consulting</li>
+            <li>EHS Management Systems Audits (ISO 14000, ISO 45000) &amp; Consulting</li>
+            <li class="sub-item">Confined Space Safety</li>
+            <li class="sub-item">Working at Height</li>
+            <li class="sub-item">Hot Work Permits</li>
+            <li class="sub-item">Risk Assessments</li>
+            <li class="sub-item">Emergency Response Training</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- RIGHT — Facilities / Products (Image 1) -->
+      <div class="service-card second-card">
+        <img src="./Brand Assets/Image 1.png" alt="Electrical and mechanical equipment" />
+        <div class="p-7 card-text" style="margin-top:-30px;">
+          <h3 class="font-bold text-[#3a8fad] mb-4" style="font-size:25px;" style="font-family:'Barlow Condensed',sans-serif;letter-spacing:-0.01em;">
+            Facilities &amp; Equipment Supply
+          </h3>
+          <ul class="service-list">
+            <li>Generators, Air-conditioning Equipment</li>
+            <li>Compressors, Switch Gear &amp; Electrical Equipment</li>
+            <li>Communication Systems</li>
+            <li>Security Systems &amp; Access Systems</li>
+            <li>Fire Protection Equipment for Computer Rooms</li>
+            <li>Air Handling Units &amp; Filters</li>
+            <li>Computer Systems, Software &amp; Peripherals, Etc.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       SECTION 3 — ABOUT US
+  ══════════════════════════════════════ -->
+  <section id="about" class="about-strip py-20">
+
+    <!-- Background layer -->
+    <div class="absolute inset-0 -z-10" aria-hidden="true">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#eaf6fa 0%,#f5fcfe 55%,#e0f4f8 100%);"></div>
+      <div style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.18) 0%,transparent 70%);"></div>
+      <div style="position:absolute;bottom:-80px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(58,143,173,0.12) 0%,transparent 70%);"></div>
+      <div style="position:absolute;top:40%;left:8%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.14) 0%,transparent 70%);"></div>
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25;" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="dots2" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.2" fill="#3a8fad"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#dots2)"/>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="section-label">Our Story</span>
+  
+        <h2 class="section-heading mb-6">About Us</h2>
+        <p class="text-[#3a5a66] leading-relaxed mb-5" style="font-size:19px;">
+          Originally envisioned and named as <strong>Safe FAB Safety Services Singapore</strong> under
+          then SAFEFAB U.S.A., SAFEFAB made its name supplying Safety Services in Singapore and
+          supplied Fire Protection Systems, Electrical and Mechanical and Spare Parts and accessories
+          to foreign based customers in the Philippines and Papua New Guinea.
+        </p>
+        <p class="text-[#3a5a66] leading-relaxed" style="font-size:19px;">
+          With Facilities Supplies and Services added to its portfolio, Power was added to SF3S — thus
+          the name <strong>SAFEFAB Power</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SECTION 4 — CONTACT
+  ══════════════════════════════════════ -->
+  <section id="contact" class="max-w-6xl mx-auto px-6 py-20">
+    <div class="max-w-xl">
+      <h2 class="section-heading mb-2">Contact Us</h2>
+      <p class="text-[#5a7a86] mb-8" style="font-size:16px;">
+        Please feel free to contact us in case you have any further queries. Contact <a href="mailto:ferdinand@safefab.solutions" style="color:var(--brand-teal);text-decoration:underline;">ferdinand@safefab.solutions</a>, fill in the form above to get us connected with us!
+      </p>
+
+      <form
+        onsubmit="handleSubmit(event)"
+        class="flex flex-col gap-5"
+        novalidate
+      >
+        <div class="flex flex-col gap-1.5">
+          <label class="font-semibold uppercase tracking-widest text-[#5a7a86]" style="font-size:17px;" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="john@example.com" required />
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label class="font-semibold uppercase tracking-widest text-[#5a7a86]" style="font-size:17px;" for="message">Message</label>
+          <textarea
+            class="form-input resize-none"
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Tell us about your project or inquiry…"
+            required
+          ></textarea>
+        </div>
+
+        <div>
+          <button type="submit" class="btn-primary">Send Message</button>
+        </div>
+
+        <p id="formStatus" class="text-sm font-medium hidden"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer style="border-top:1px solid #ddeef3; background:#f9fdfe;">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <img src="./Brand Assets/Safe-Stacked.png" alt="SAFEFAB Power" class="h-[44px] w-auto opacity-70" />
+      <p class="text-xs text-[#7a9aa6]">ACRA Registration # 53459132M</p>
+      <p class="text-xs text-[#7a9aa6]">&copy; 2026 SAFEFAB Power. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Thank you! Your message has been sent. We\'ll be in touch shortly.';
+      status.className = 'text-sm font-medium text-[#3a8fad]';
+      status.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => status.classList.add('hidden'), 6000);
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+  </script>
+
+</body>
+</html>
