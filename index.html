@@ -55,6 +55,14 @@
       letter-spacing: -0.02em;
     }
 
+    /* ── Hero videos ── */
+    .hero-video-mobile { display: block; }
+    .hero-video-desktop { display: none; }
+    @media (min-width: 768px) {
+      .hero-video-mobile { display: none; }
+      .hero-video-desktop { display: block; }
+    }
+
     /* ── Nav ── */
     nav {
       position: sticky;
@@ -314,25 +322,23 @@
   ══════════════════════════════════════ -->
   <section id="home" class="relative overflow-hidden" style="margin-bottom:-20px;">
 
-    <!-- Background layer -->
+    <!-- Background video -->
     <div class="absolute inset-0 -z-10" aria-hidden="true">
-      <!-- Base gradient -->
-      <div style="position:absolute;inset:0;background:linear-gradient(135deg,#eaf6fa 0%,#f5fcfe 55%,#e0f4f8 100%);"></div>
-
-      <!-- Large soft circle — top right -->
-      <div style="position:absolute;top:-120px;right:-100px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.18) 0%,transparent 70%);"></div>
-
-      <!-- Medium circle — bottom left -->
-      <div style="position:absolute;bottom:-80px;left:-60px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(58,143,173,0.12) 0%,transparent 70%);"></div>
-
-      <!-- Small accent circle — mid left -->
-      <div style="position:absolute;top:40%;left:8%;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(91,201,214,0.14) 0%,transparent 70%);"></div>
-
-<!-- Diagonal grid dots -->
-      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.25;" xmlns="http://www.w3.org/2000/svg">
+      <!-- Desktop video -->
+      <video autoplay muted loop playsinline class="hero-video-desktop" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="./Brand Assets/Main-Hero-Video.mp4" type="video/mp4">
+      </video>
+      <!-- Mobile video -->
+      <video autoplay muted loop playsinline class="hero-video-mobile" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <source src="./Brand Assets/Mobile-Hero-Video.mp4" type="video/mp4">
+      </video>
+      <!-- Dark overlay to keep text readable -->
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,30,40,0.72) 0%,rgba(20,50,65,0.60) 100%);"></div>
+      <!-- Subtle dot texture -->
+      <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.12;" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-            <circle cx="2" cy="2" r="1.2" fill="#3a8fad"/>
+            <circle cx="2" cy="2" r="1.2" fill="#ffffff"/>
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#dots)"/>
@@ -345,14 +351,14 @@
 
         <!-- Mobile-only pill (above logo) -->
         <div class="text-center md:hidden order-0 -mb-[26px]">
-          <h1 class="section-label">Safety &amp; Facilities Services</h1>
+          <h1 class="section-label" style="color:#ffffff;background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35);">Safety &amp; Facilities Services</h1>
         </div>
 
         <!-- Left: text -->
         <div class="flex-1 text-center md:text-left order-2 md:order-1 mt-[45px] md:mt-0">
-          <h1 class="section-label mb-6 hidden md:inline-block">Safety &amp; Facilities Services</h1>
-          <h2 class="section-heading mb-4">End-to-End Safety, Systems &amp; Solutions.</h2>
-          <p class="text-[#3a5a66] leading-relaxed" style="font-size:21px;">
+          <h1 class="section-label mb-6 hidden md:inline-block" style="color:#ffffff;background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.35);">Safety &amp; Facilities Services</h1>
+          <h2 class="section-heading mb-4" style="color:#ffffff;">End-to-End Safety, Systems &amp; Solutions.</h2>
+          <p class="leading-relaxed" style="font-size:21px;color:rgba(255,255,255,0.85);">
             Backed by industry expertise, we deliver practical safety solutions, certified training, and reliable systems that keep your operations compliant and resilient.
           </p>
           <div class="mt-8">
